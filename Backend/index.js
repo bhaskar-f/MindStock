@@ -23,7 +23,11 @@ app.use(async (_req, res, next) => {
 });
 
 app.get("/", (_req, res) => {
-  res.send("<h1>Hello, Express.js Server!</h1>");
+  res.send("api is running");
+});
+
+app.get("/api", (_req, res) => {
+  res.send("api is running");
 });
 
 app.use("/api/ideas", idearouter);
