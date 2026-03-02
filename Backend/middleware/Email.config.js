@@ -13,12 +13,7 @@ export const transporter = nodemailer.createTransport({
   port: smtpPort,
   secure: smtpSecure,
   auth: {
-<<<<<<< HEAD
     user: process.env.SMTP_USER || "",
     pass: process.env.SMTP_PASS || "",
-=======
-    user: process.env.MAIN_EMAIL,
-    pass: process.env.MAIN_PASSWORD,
->>>>>>> 606bf6a8bcc0eb9f695bfb8987282b6039cfe904
   },
 });

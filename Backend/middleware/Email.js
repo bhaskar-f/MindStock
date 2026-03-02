@@ -17,11 +17,7 @@ export const sentVarificationMail = async (email, name, varificationCode) => {
     }
 
     const response = await transporter.sendMail({
-<<<<<<< HEAD
       from: mailFrom,
-=======
-      from: '"Mind Stock" <process.env.MAIN_EMAIL>',
->>>>>>> 606bf6a8bcc0eb9f695bfb8987282b6039cfe904
       to: email,
       subject: "Varify Your Email",
       text: "varify your email", // Plain-text version of the message
@@ -44,11 +40,7 @@ export const welcomeEmail = async (email, name) => {
     }
 
     const response = await transporter.sendMail({
-<<<<<<< HEAD
       from: mailFrom,
-=======
-      from: '"Mind Stock" <process.env.MAIN_EMAIL>',
->>>>>>> 606bf6a8bcc0eb9f695bfb8987282b6039cfe904
       to: email,
       subject: "Welcome To MindStock",
       text: "WElcome to MindStock", // Plain-text version of the message
