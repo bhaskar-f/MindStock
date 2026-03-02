@@ -25,9 +25,13 @@ Set these for Production (and Preview if needed):
 - `SMTP_PASS`
 - `MAIL_FROM` (example: `"Mind Stock <you@domain.com>"`)
 - `APP_URL` (example: `https://your-project.vercel.app`)
+- `CORS_ORIGINS` (comma-separated allowed frontend origins)
+  Example: `https://your-frontend.vercel.app,https://mindstock.com`
 
 Optional frontend variable:
 - `VITE_API_BASE_URL` should be left empty/unset when using the same Vercel domain for API.
+- If frontend and backend are separate Vercel projects, set
+  `VITE_API_BASE_URL=https://your-backend.vercel.app`
 
 ## 3. Deploy
 
