@@ -20,10 +20,14 @@ const connectDB = async () => {
   }
 
   if (!cache.promise) {
-    cache.promise = mongoose.connect(process.env.MONGO_URI).then((mongooseInstance) => {
-      console.log("MongoDB connected");
-      return mongooseInstance.connection;
-    });
+    cache.promise = mongoose
+      .connect(process.env.MONGO_URI, {
+        serverSelectionTimeoutMS: 8000,
+      })
+      .then((mongooseInstance) => {
+        console.log("MongoDB connected");
+        return mongooseInstance.connection;
+      });
   }
 
   try {

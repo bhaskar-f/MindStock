@@ -10,7 +10,15 @@ const app = express();
 
 app.use(express.json());
 
-app.use(async (_req, res, next) => {
+app.get("/", (_req, res) => {
+  res.send("api is running");
+});
+
+app.get("/api", (_req, res) => {
+  res.send("api is running");
+});
+
+const ensureDbConnection = async (_req, res, next) => {
   try {
     await connectDB();
     return next();
@@ -20,18 +28,10 @@ app.use(async (_req, res, next) => {
       message: "Database connection is unavailable.",
     });
   }
-});
+};
 
-app.get("/", (_req, res) => {
-  res.send("api is running");
-});
-
-app.get("/api", (_req, res) => {
-  res.send("api is running");
-});
-
-app.use("/api/ideas", idearouter);
-app.use("/api/auth", authrouter);
+app.use("/api/ideas", ensureDbConnection, idearouter);
+app.use("/api/auth", ensureDbConnection, authrouter);
 
 if (!process.env.VERCEL) {
   const PORT = Number(process.env.PORT) || 3000;
