@@ -140,7 +140,6 @@ export async function loginUser(req, res) {
       { expiresIn: process.env.JWT_EXPIRY },
     );
 
-    // Login successful - TODO: Add JWT token generation here
     return res.status(200).json({
       message: "Login successful",
       data: {
@@ -228,7 +227,9 @@ export async function updateProfile(req, res) {
     const user = await User.findByIdAndUpdate(userId, updates, {
       new: true,
       runValidators: true,
-    }).select("-password -varificationCode -resetPasswordToken -resetPasswordExpires");
+    }).select(
+      "-password -varificationCode -resetPasswordToken -resetPasswordExpires",
+    );
 
     if (!user) {
       return res.status(404).json({
